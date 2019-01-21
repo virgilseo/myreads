@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
+import ListOfBooks from './ListOfBooks'
 
 class BooksApp extends Component {
 
@@ -19,6 +20,7 @@ class BooksApp extends Component {
   render() {
     return (
       <div className='app'>
+        <ListOfBooks />
       </div>
     )
   }
