@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import ListOfBooks from './ListOfBooks'
+import BookShelf from './BookShelf'
 
 class BooksApp extends Component {
 
@@ -14,6 +15,7 @@ class BooksApp extends Component {
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
       this.setState({ books })
+      console.log(books)
     })
   }
 
@@ -21,6 +23,9 @@ class BooksApp extends Component {
     return (
       <div className='app'>
         <ListOfBooks />
+        <BookShelf title='Currently Reading' shelf='currentlyReading' books={this.state.books}/>
+        <BookShelf title='Want to Read' shelf='wantToRead' books={this.state.books}/>
+        <BookShelf title='Read' shelf='read' books={this.state.books}/>
       </div>
     )
   }
