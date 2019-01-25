@@ -3,14 +3,18 @@ import React, {Component} from 'react'
 class BookShelf extends Component {
 
   render() {
+
+// Assign books to the apopriate shelf
+    let filterdBooks = this.props.books.filter((b) => b.shelf === this.props.shelf)
+
     return (
       <div>
         <div className="bookshelf">
           <h2 className="bookshelf-title">{this.props.title}</h2>
           <div className="bookshelf-books">
             <ol className="books-grid">
-            {this.props.books.map((book) => (
-             <li>
+            {filterdBooks.map((book) => (
+             <li key={book.id}>
                 <div className="book">
                   <div className="book-top">
                     <div className="book-cover" style={{ width: 128, height: 193, backgroundImage:`url(${book.imageLinks.thumbnail})`}}></div>
