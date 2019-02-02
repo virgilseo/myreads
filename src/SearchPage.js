@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 
 class SearchPage extends Component {
 // Set the initial state
@@ -11,7 +12,7 @@ class SearchPage extends Component {
     return(
       <div className="search-books">
         <div className="search-books-bar">
-          <button className="close-search">Close</button>
+          <Link className="close-search" to='/'>Close</Link>
           <div className="search-books-input-wrapper">
             {/*
               NOTES: The search from BooksAPI is limited to a particular set of search terms.

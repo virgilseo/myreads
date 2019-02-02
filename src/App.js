@@ -5,6 +5,7 @@ import ListOfBooks from './ListOfBooks'
 import BookShelf from './BookShelf'
 import OpenSearch from './OpenSearch'
 import SearchPage from './SearchPage'
+import {Route} from 'react-router-dom'
 
 class BooksApp extends Component {
 
@@ -38,27 +39,33 @@ class BooksApp extends Component {
 
     return (
       <div className='app'>
-        <ListOfBooks />
-        <BookShelf
-          title='Currently Reading'
-          shelf='currentlyReading'
-          books={this.state.books}
-          changeShelf={this.changeShelf}
-        />
-        <BookShelf
-          title='Want to Read'
-          shelf='wantToRead'
-          books={this.state.books}
-          changeShelf={this.changeShelf}
-        />
-        <BookShelf
-          title='Read'
-          shelf='read'
-          books={this.state.books}
-          changeShelf={this.changeShelf}
-        />
-        <OpenSearch />
-        <SearchPage />
+        <Route exact path='/' render={() => (
+        <div>
+          <ListOfBooks />
+          <BookShelf
+            title='Currently Reading'
+            shelf='currentlyReading'
+            books={this.state.books}
+            changeShelf={this.changeShelf}
+          />
+          <BookShelf
+            title='Want to Read'
+            shelf='wantToRead'
+            books={this.state.books}
+            changeShelf={this.changeShelf}
+          />
+          <BookShelf
+            title='Read'
+            shelf='read'
+            books={this.state.books}
+            changeShelf={this.changeShelf}
+          />
+          <OpenSearch />
+        </div>
+        )}/>
+        <Route exact path='/search' render={() => (
+          <SearchPage />
+        )}/>
       </div>
     )
   }
