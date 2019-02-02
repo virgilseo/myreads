@@ -4,10 +4,11 @@ import './App.css'
 import ListOfBooks from './ListOfBooks'
 import BookShelf from './BookShelf'
 import OpenSearch from './OpenSearch'
+import SearchPage from './SearchPage'
 
 class BooksApp extends Component {
 
-// Set initial state
+// Set the initial state
   state = {
     books : []
   }
@@ -43,20 +44,21 @@ class BooksApp extends Component {
           shelf='currentlyReading'
           books={this.state.books}
           changeShelf={this.changeShelf}
-         />
+        />
         <BookShelf
           title='Want to Read'
           shelf='wantToRead'
           books={this.state.books}
           changeShelf={this.changeShelf}
-         />
+        />
         <BookShelf
           title='Read'
           shelf='read'
           books={this.state.books}
           changeShelf={this.changeShelf}
-         />
+        />
         <OpenSearch />
+        <SearchPage />
       </div>
     )
   }
