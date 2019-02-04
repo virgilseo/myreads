@@ -35,6 +35,17 @@ class BooksApp extends Component {
     }))
   }
 
+// Add books from the search results to the main page
+  updateShelf = (book, shelf) => {
+
+    book.shelf = shelf
+
+    this.setState({books: this.state.books.concat([book])})
+
+    BooksAPI.update(book, shelf)
+
+ }
+
   render() {
 
     return (
@@ -64,7 +75,7 @@ class BooksApp extends Component {
         </div>
         )}/>
         <Route exact path='/search' render={() => (
-          <SearchPage />
+          <SearchPage updateShelf={this.updateShelf} books={this.state.books} />
         )}/>
       </div>
     )

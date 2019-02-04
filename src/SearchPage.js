@@ -20,7 +20,8 @@ class SearchPage extends Component {
 
        if(!searchResults || searchResults.error) {
          this.setState({newBooks: []})
-       }else {
+       } else {
+//Filter out the books with no thumbnails
          this.setState({newBooks: searchResults.filter(book => book.imageLinks)})
        }
 
@@ -32,7 +33,7 @@ class SearchPage extends Component {
  }
 
   render() {
-
+    console.log(this.state.newBooks)
     return(
         <div className="search-books">
           <div className="search-books-bar">
@@ -49,7 +50,7 @@ class SearchPage extends Component {
                     <div className="book-top">
                       <div className="book-cover" alt={book.title} style={{ width: 128, height: 193, backgroundImage:`url(${book.imageLinks.thumbnail})`}}></div>
                       <div className="book-shelf-changer">
-                        <select value='none'>
+                        <select value={book.shelf} onChange={(event) => this.props.updateShelf(book,event.target.value)}>
                           <option value="move" disabled>Move to...</option>
                           <option value="currentlyReading">Currently Reading</option>
                           <option value="wantToRead">Want to Read</option>
