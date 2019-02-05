@@ -24,27 +24,30 @@ class BooksApp extends Component {
 //Change the book shelf
   changeShelf = (book, shelf) => {
 
-    this.setState( prevState => ({
-      books: prevState.books.map(currentBook => {
-        if(currentBook.id === book.id) {
-          currentBook.shelf = shelf
-          BooksAPI.update(currentBook, shelf)
-        }
-        return currentBook
-      })
-    }))
+     let bookShelf = this.state.books.filter(b => b.id === book.id)
+     
+     if (bookShelf.length === 0) {
+      book.shelf = shelf
+
+      BooksAPI.update(book, shelf).then(this.setState(prevState => ({
+        books: prevState.books.concat([book])
+      })))
+      console.log(book)
+    } else {
+      this.setState( prevState => ({
+        books: prevState.books.map(currentBook => {
+          if(currentBook.id === book.id) {
+            currentBook.shelf = shelf
+            BooksAPI.update(currentBook, shelf)
+          }
+          return currentBook
+        })
+      }))
+    }
+
   }
 
-// Add books from the search results to the main page
-  updateShelf = (book, shelf) => {
 
-    book.shelf = shelf
-
-    this.setState({books: this.state.books.concat([book])})
-
-    BooksAPI.update(book, shelf)
-
- }
 
   render() {
 
@@ -75,7 +78,7 @@ class BooksApp extends Component {
         </div>
         )}/>
         <Route exact path='/search' render={() => (
-          <SearchPage updateShelf={this.updateShelf} books={this.state.books} />
+          <SearchPage changeShelf={this.changeShelf} books={this.state.books} />
         )}/>
       </div>
     )
