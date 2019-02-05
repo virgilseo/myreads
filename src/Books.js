@@ -7,6 +7,12 @@ class Books extends Component {
 
     const {book} = this.props
 
+    if (!book.shelf) {
+      let searchBook = this.props.books.filter(b => b.id === book.id).map((b) => { return b.shelf })
+      console.log(searchBook)
+      book.shelf = searchBook.toString()
+    }
+
     return(
 
        <div className="book">
@@ -17,7 +23,7 @@ class Books extends Component {
               shelf={this.props.shelf}
               book={book}
               changeShelf={this.props.changeShelf}
-            />
+              />
           </div>
           <div className="book-title">{book.title}</div>
           <div className="book-authors">{book.authors}</div>

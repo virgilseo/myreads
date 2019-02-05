@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
+import Books from './Books'
 
 class SearchPage extends Component {
 
@@ -35,10 +36,25 @@ class SearchPage extends Component {
      }
  }
 
+
+   // Asign a bookshelf value to the book on the search page
+
+  // updateShelf = (results) => {
+    // let mainBooks = this.props.books
+    // let searchBooks = this.state.newBooks.filter(result => mainBooks.find(b => {
+      // if(b.id === result.id) {
+    //     b.id = result.id
+    //   }
+      // return result
+
+
+//}))
+   //mainBooks.concat(searchBooks)
+   //return results
+//}
+
   render() {
 
-    console.log(this.state.newBooks)
-    console.log(this.props.shelf)
     return(
         <div className="search-books">
           <div className="search-books-bar">
@@ -51,22 +67,12 @@ class SearchPage extends Component {
             <ol className="books-grid">
               {this.state.newBooks.map((book) => (
                <li key={book.id}>
-                 <div className="book">
-                    <div className="book-top">
-                      <div className="book-cover" alt={book.title} style={{ width: 128, height: 193, backgroundImage:`url(${book.imageLinks.thumbnail})`}}></div>
-                      <div className="book-shelf-changer">
-                        <select value='none' onChange={(event) => this.props.changeShelf(book,event.target.value)}>
-                          <option value="move" disabled>Move to...</option>
-                          <option value="currentlyReading">Currently Reading</option>
-                          <option value="wantToRead">Want to Read</option>
-                          <option value="read">Read</option>
-                          <option value="none" disabled>None</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div className="book-title">{book.title}</div>
-                    <div className="book-authors">{book.authors}</div>
-                  </div>
+                 <Books
+                   books={this.props.books}
+                   shelf={this.props.shelf}
+                   changeShelf={this.props.changeShelf}
+                   book={book}
+                   />
                 </li>
               ))}
             </ol>
