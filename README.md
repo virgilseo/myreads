@@ -10,7 +10,7 @@ A browser app that allows you to search for and categorize books.
 ## Instructions
 
 The app has 2 different pages. On the main page you have your 3 bookshelves: currently reading, want to read and read.
-On the main page you will find a button that takes you to the search page. Here you can search for books and ad them to one of the bookshelves on the main page.
+On the main page you will find a button that takes you to the search page. Here you can search for books and add them to one of the bookshelves on the main page.
 
 The search terms you can use are limited, please have a look at the [SEARCH_TERMS.md](SEARCH_TERMS.md) file to find out what these are.
 
