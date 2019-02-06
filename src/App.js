@@ -32,7 +32,6 @@ class BooksApp extends Component {
       BooksAPI.update(book, shelf).then(this.setState(prevState => ({
         books: prevState.books.concat([book])
       })))
-      console.log(book)
     } else {
       this.setState( prevState => ({
         books: prevState.books.map(currentBook => {

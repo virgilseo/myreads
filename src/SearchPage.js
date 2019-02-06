@@ -29,7 +29,7 @@ class SearchPage extends Component {
       })
      }
    //Clear the search results
-     if (query.length < 1) {
+     if (query.length === 0) {
        this.setState({newBooks: []})
      }
  }
