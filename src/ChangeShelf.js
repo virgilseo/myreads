@@ -5,8 +5,7 @@ class ChangeShelf extends Component {
 
   render() {
 
-  let book = this.props.book
-  let changeShelf = this.props.changeShelf
+  const {book, changeShelf} = this.props
 
     return(
       <div className="book-shelf-changer">

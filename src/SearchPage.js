@@ -15,10 +15,8 @@ class SearchPage extends Component {
 
 //Update the query state on user input
      this.setState({ query: query.trim() })
-     console.log(query.length)
 
-
-     if (query.length > 1) {
+     if (query.length > 2) {
        BooksAPI.search(this.state.query).then((searchResults) => {
 
          if(!searchResults || searchResults.error) {
@@ -31,27 +29,10 @@ class SearchPage extends Component {
       })
      }
    //Clear the search results
-     if (query.length === 0) {
+     if (query.length < 1) {
        this.setState({newBooks: []})
      }
  }
-
-
-   // Asign a bookshelf value to the book on the search page
-
-  // updateShelf = (results) => {
-    // let mainBooks = this.props.books
-    // let searchBooks = this.state.newBooks.filter(result => mainBooks.find(b => {
-      // if(b.id === result.id) {
-    //     b.id = result.id
-    //   }
-      // return result
-
-
-//}))
-   //mainBooks.concat(searchBooks)
-   //return results
-//}
 
   render() {
 
@@ -72,8 +53,8 @@ class SearchPage extends Component {
                    shelf={this.props.shelf}
                    changeShelf={this.props.changeShelf}
                    book={book}
-                   />
-                </li>
+                 />
+               </li>
               ))}
             </ol>
           </div>

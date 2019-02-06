@@ -18,10 +18,10 @@ class BookShelf extends Component {
             {filterdBooks.map((book) => (
               <li key={book.id}>
                 <Books
-                   books={this.props.books}
-                   shelf={this.props.shelf}
-                   changeShelf={this.props.changeShelf}
-                   book={book}
+                  books={this.props.books}
+                  shelf={this.props.shelf}
+                  changeShelf={this.props.changeShelf}
+                  book={book}
                  />
               </li>
             ))}

@@ -25,7 +25,7 @@ class BooksApp extends Component {
   changeShelf = (book, shelf) => {
 
      let bookShelf = this.state.books.filter(b => b.id === book.id)
-     
+
      if (bookShelf.length === 0) {
       book.shelf = shelf
 
