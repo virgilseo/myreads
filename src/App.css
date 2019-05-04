@@ -133,6 +133,12 @@ button:active {
   flex-wrap: wrap;
 }
 
+@media (min-width: 1400px) {
+  .books-grid {
+    margin-left: 2%;
+  }
+}
+
 .books-grid li {
   padding: 10px 15px;
   text-align: left;
