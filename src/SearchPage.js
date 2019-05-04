@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import Books from './Books'
+import {debounce} from 'lodash';
 
 class SearchPage extends Component {
 
@@ -11,12 +12,12 @@ class SearchPage extends Component {
     newBooks: []
   }
 
-  updateQuery = (query) => {
+  updateQuery = debounce((query) => {
 
 //Update the query state on user input
      this.setState({ query: query.trim() })
 
-     if (query.length > 2) {
+     if (query) {
        BooksAPI.search(this.state.query).then((searchResults) => {
 
          if(!searchResults || searchResults.error) {
@@ -32,7 +33,7 @@ class SearchPage extends Component {
      if (query.length === 0) {
        this.setState({newBooks: []})
      }
- }
+ },700)
 
   render() {
 
