@@ -108,6 +108,7 @@ body, .app {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 28px;
+  background-color: #FFFFFF;
   font-size: 0;
   border: none;
   outline: none;
@@ -131,12 +132,6 @@ button:active {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-}
-
-@media (min-width: 1400px) {
-  .books-grid {
-    margin-left: 2%;
-  }
 }
 
 .books-grid li {
