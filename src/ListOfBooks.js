@@ -6,7 +6,7 @@ class ListOfBooks extends Component {
     return (
       <div className='list-books'>
         <div className="list-books-title">
-          <h1>MyReads</h1>
+          <h1 id="header">MyReads</h1>
         </div>
      </div>
     )

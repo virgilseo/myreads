@@ -6,6 +6,7 @@ import BookShelf from './BookShelf'
 import OpenSearch from './OpenSearch'
 import SearchPage from './SearchPage'
 import {Route} from 'react-router-dom'
+import BackToTop from './BackToTop'
 
 class BooksApp extends Component {
 
@@ -43,9 +44,15 @@ class BooksApp extends Component {
         })
       }))
     }
-
   }
 
+  //Scroll to the top of the page
+    scrollToTop = () => {
+      window.scrollTo({
+        top: 0,
+        behavior:'smooth'
+      })
+    }
 
 
   render() {
@@ -74,10 +81,13 @@ class BooksApp extends Component {
             changeShelf={this.changeShelf}
           />
           <OpenSearch />
+          <BackToTop
+           scroll={this.scrollToTop}
+          />
         </div>
         )}/>
         <Route exact path='/search' render={() => (
-          <SearchPage changeShelf={this.changeShelf} books={this.state.books} />
+          <SearchPage changeShelf={this.changeShelf} books={this.state.books} scroll={this.scrollToTop}/>
         )}/>
       </div>
     )

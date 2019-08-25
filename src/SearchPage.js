@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import Books from './Books'
 import {debounce} from 'lodash';
+import BackToTop from './BackToTop'
 
 class SearchPage extends Component {
 
@@ -59,6 +60,7 @@ class SearchPage extends Component {
               ))}
             </ol>
           </div>
+          <BackToTop scroll={this.props.scroll}/>
         </div>
        )
     }
