@@ -60,7 +60,7 @@ class SearchPage extends Component {
               ))}
             </ol>
           </div>
-          <BackToTop scroll={this.props.scroll}/>
+          <BackToTop scroll={this.props.scroll} topBtnClass={this.props.topBtnClass}/>
         </div>
        )
     }

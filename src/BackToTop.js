@@ -7,7 +7,7 @@ class BackToTop extends Component {
 
     return(
       <div>
-        <i className='material-icons back-btn' onClick={() => {this.props.scroll()}}>arrow_upward</i>
+        <i className={this.props.topBtnClass} onClick={() => {this.props.scroll()}}>arrow_upward</i>
       </div>
     )
   }

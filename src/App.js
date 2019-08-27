@@ -12,7 +12,8 @@ class BooksApp extends Component {
 
 // Set the initial state
   state = {
-    books : []
+    books : [],
+    topBtnClass: 'back-btn-none'
   }
 
 //Get available books from the server
@@ -20,6 +21,11 @@ class BooksApp extends Component {
     BooksAPI.getAll().then((books) => {
       this.setState({ books })
     })
+    window.addEventListener('scroll', this.displayBtn)
+  }
+
+  componentWillUnMount() {
+    window.removeEventListener('scroll', this.displayBtn)
   }
 
 //Change the book shelf
@@ -54,11 +60,21 @@ class BooksApp extends Component {
       })
     }
 
+  //Check if the user is scrolling the page and then display button
+
+  displayBtn = () => {
+      if (window.scrollY > 500) {
+        this.setState({topBtnClass: 'material-icons back-btn'})
+      } else {
+        this.setState({topBtnClass: 'back-btn-none'})
+      }
+  }
+
 
   render() {
 
     return (
-      <div className='app'>
+      <div className='app' onScroll={this.displayBtn}>
         <Route exact path='/' render={() => (
         <div>
           <ListOfBooks />
@@ -83,11 +99,17 @@ class BooksApp extends Component {
           <OpenSearch />
           <BackToTop
            scroll={this.scrollToTop}
+           topBtnClass={this.state.topBtnClass}
           />
         </div>
         )}/>
         <Route exact path='/search' render={() => (
-          <SearchPage changeShelf={this.changeShelf} books={this.state.books} scroll={this.scrollToTop}/>
+          <SearchPage
+            changeShelf={this.changeShelf}
+            books={this.state.books}
+            scroll={this.scrollToTop}
+            topBtnClass={this.state.topBtnClass}
+          />
         )}/>
       </div>
     )
