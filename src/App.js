@@ -75,7 +75,7 @@ class BooksApp extends Component {
 
     return (
       <div className='app' onScroll={this.displayBtn}>
-        <Route exact path='/' render={() => (
+        <Route exact path={process.env.PUBLIC_URL + '/'} render={() => (
         <div>
           <ListOfBooks />
           <BookShelf
@@ -103,7 +103,7 @@ class BooksApp extends Component {
           />
         </div>
         )}/>
-        <Route exact path='/search' render={() => (
+        <Route exact path={process.env.PUBLIC_URL + '/search'} render={() => (
           <SearchPage
             changeShelf={this.changeShelf}
             books={this.state.books}
